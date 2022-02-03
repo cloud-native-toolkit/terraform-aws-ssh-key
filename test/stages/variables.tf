@@ -1,6 +1,6 @@
 variable "region" {
   type    = string
-  default = "us-west-1"
+  default = "ap-south-1"
 }
 
 variable "access_key" {
@@ -45,3 +45,8 @@ variable "rsa_bits" {
   default = 3072
 }
 
+variable "prefix_name" {
+  type        = string
+  description = "Prefix to be added to the names of resources which are being provisioned"
+  default     = "swe"
+}

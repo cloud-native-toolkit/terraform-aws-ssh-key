@@ -16,7 +16,7 @@ resource "aws_key_pair" "publickey" {
   key_name = local.name
   public_key = local.public_key
   tags = {
-    Name = "swe-key"
+    Name = "${var.prefix_name}-key"
   }
 }
 
