@@ -14,8 +14,9 @@ fi
 
 impfile=$(aws ec2 describe-key-pairs --query 'KeyPairs[*].[KeyName]' --key-name $keyname --output=text)
 
-if [ $impfile = $keyname ]; then
-   echo "Public ket $keyname imported into AWS Cloud successfully"
+if [ $impfile -eq $keyname ]
+then
+   echo "Public key $keyname imported into AWS Cloud successfully"
 else
    echo "Public key $keyname not imported into AWS Cloud "
    exit 1
