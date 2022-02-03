@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 
-#if [[ -f swe-pri-key ]] && [[ -f swe-pub-key ]] ; then
-#  echo "Private and Public keys generated successfully."
-#  exit 1
-#else 
-#  echo "Keys not  generated "
-#  exit 1
-#fi
+keyname="swe-prd"
+crefile=`ls -l *-key | wc -l`
+deffile=2
 
-for f in *-key
-do
-    if [ -f "$f" ] 
-    then 
-    echo "Key file $f is created"
-      else
-    echo "Key file $f is Not created"
-    fi
+if [ $deffile -eq $crefile ] 
+then
+    echo "Key files are created successfully"
+else
+    echo "Key file not created successfully"
     exit 1
-done
-exit 0
+fi
+
+impfile=$(aws ec2 describe-key-pairs --query 'KeyPairs[*].[KeyName]' --key-name $keyname --output=text)
+
+if [ $impfile = $keyname ]; then
+   echo "Public ket $keyname imported into AWS Cloud successfully"
+else
+   echo "Public key $keyname not imported into AWS Cloud "
+   exit 1
+fi
+   exit 0
+
