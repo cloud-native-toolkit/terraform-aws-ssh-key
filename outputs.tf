@@ -1,5 +1,8 @@
-#output "myoutput" {
-#  description = "Description of my output"
-#  value       = "value"
-#  depends_on  = [<some resource>]
-#}
+output "usrprikey" {
+  value     = tls_private_key.privatekey.private_key_pem
+  sensitive = true
+}
+output "usrpubkey" {
+  value = aws_key_pair.publickey.public_key
+  sensitive = true
+}
