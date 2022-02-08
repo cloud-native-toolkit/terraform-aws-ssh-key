@@ -28,3 +28,11 @@ resource null_resource save_keys {
      command = "echo '${aws_key_pair.publickey.public_key}' > swe-pub-key"
   }
 }
+
+data "aws_key_pair" "swekey" {
+  key_name = aws_key_pair.publickey.key_name
+}
+
+output "swesshkeyname" {
+value = data.aws_key_pair.swekey.key_name
+}
