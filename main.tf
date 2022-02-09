@@ -33,6 +33,3 @@ data "aws_key_pair" "swekey" {
   key_name = aws_key_pair.publickey.key_name
 }
 
-output "swesshkeyname" {
-value = data.aws_key_pair.swekey.key_name
-}
