@@ -1,10 +1,73 @@
 name: aws-ssh-key
 type: terraform
-description: Module to provision ssh-key on aws
+description: >-
+  Module to register an ssh key into the AWS Cloud infrastructure for use in
+  securely accessing VPC resources
 tags:
-  - tools
-  - devops
+  - vpc
+  - ssh
+  - infrastructure
+  - security
 versions:
+  - platforms: []
+    providers:
+      - name: aws
+        source: hashicorp/aws
+    dependencies: []
+    variables:
+      - name: region
+        type: string
+        default: ap-south-1
+      - name: access_key
+        type: string
+        default: ''
+      - name: secret_key
+        type: string
+        default: ''
+      - name: prefix_name
+        type: string
+        description: >-
+          Prefix to be added to the names of resources which are being
+          provisioned
+        default: swe
+      - name: name_prefix
+        type: string
+        default: swe
+        description: name prefix
+        scope: global
+      - name: name
+        type: string
+        default: ''
+        scope: module
+      - name: label
+        default: prd
+        type: string
+      - name: public_key_file
+        type: string
+        default: ''
+      - name: private_key_file
+        type: string
+        default: ''
+      - name: public_key
+        type: string
+        default: ''
+        scope: module
+      - name: private_key
+        type: string
+        default: ''
+        scope: module
+      - name: rsa_bits
+        type: number
+        default: '3072'
+        scope: module
+    version: v1.0.2
+    outputs:
+      - name: usrprikey
+        sensitive: true
+      - name: usrpubkey
+        sensitive: true
+      - name: swesshkeyname
+        sensitive: true
   - platforms: []
     dependencies: []
     variables:
