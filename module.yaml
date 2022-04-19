@@ -2,10 +2,8 @@ name: aws-ssh-key
 type: terraform
 description: Module to register an ssh key into the AWS Cloud infrastructure for use in securely accessing VPC resources
 tags:
-    - vpc
-    - ssh
     - infrastructure
-    - security
+    - networking
 versions:
 - platforms: []
   providers:
@@ -15,11 +13,3 @@ versions:
   variables:
     - name: name_prefix
       scope: global
-    - name: name
-      scope: module
-    - name:  rsa_bits
-      scope: module
-    - name:  private_key
-      scope: module
-    - name:  public_key
-      scope: module
