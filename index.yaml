@@ -54,6 +54,61 @@ versions:
       - name: rsa_bits
         type: number
         default: '3072'
+    version: v1.1.1
+    outputs:
+      - name: usrprikey
+        sensitive: true
+      - name: usrpubkey
+        sensitive: true
+      - name: swesshkeyname
+        sensitive: true
+  - platforms: []
+    providers:
+      - name: aws
+        source: hashicorp/aws
+    dependencies: []
+    variables:
+      - name: region
+        type: string
+        default: ap-south-1
+      - name: access_key
+        type: string
+        default: ''
+      - name: secret_key
+        type: string
+        default: ''
+      - name: prefix_name
+        type: string
+        description: >-
+          Prefix to be added to the names of resources which are being
+          provisioned
+        default: swe
+      - name: name_prefix
+        type: string
+        default: swe
+        description: name prefix
+        scope: global
+      - name: name
+        type: string
+        default: ''
+      - name: label
+        default: prd
+        type: string
+      - name: public_key_file
+        type: string
+        default: ''
+      - name: private_key_file
+        type: string
+        default: ''
+      - name: public_key
+        type: string
+        default: ''
+      - name: private_key
+        type: string
+        default: ''
+      - name: rsa_bits
+        type: number
+        default: '3072'
     version: v1.1.0
     outputs:
       - name: usrprikey
