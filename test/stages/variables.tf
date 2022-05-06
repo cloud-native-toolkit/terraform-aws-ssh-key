@@ -45,8 +45,3 @@ variable "rsa_bits" {
   default = 3072
 }
 
-variable "prefix_name" {
-  type        = string
-  description = "Prefix to be added to the names of resources which are being provisioned"
-  default     = "swe"
-}
